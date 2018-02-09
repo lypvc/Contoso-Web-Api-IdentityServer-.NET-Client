@@ -1,5 +1,5 @@
 ## Contoso University Web Api Protected by IdentityServer4 - ##
-## Consumed by .NET-Client ##
+## Consumed by .NET Client ##
 
 **Level:** Beginner
 
