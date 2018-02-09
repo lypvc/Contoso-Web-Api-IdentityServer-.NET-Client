@@ -10,7 +10,7 @@ one of their samples, coming from [here](https://github.com/IdentityServer/Ident
 
 The classes used come from **Microsofts** excellent EF Guide, can be found at this [spot](https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/intro).
 
-The code concerning the Contoso University API originates from this nice repo, by [kkagill]( https://github.com/kkagill/ContosoUniversity-Backend).  **The repo has some very nice examples on how to...**
+The code concerning the Contoso University API originates from this repo, by [kkagill]( https://github.com/kkagill/ContosoUniversity-Backend).  **This repo has some very nice examples on how to...**
 
 1. make calls into the db
 2. use the Generic Repository Pattern 
