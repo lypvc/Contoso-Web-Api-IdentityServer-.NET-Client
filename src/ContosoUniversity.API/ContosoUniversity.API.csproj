@@ -5,13 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\AccountController.cs" />
-    <Compile Remove="Controllers\AdminController.cs" />
-    <Compile Remove="Controllers\UserAController.cs" />
-    <Compile Remove="Controllers\UserController.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
