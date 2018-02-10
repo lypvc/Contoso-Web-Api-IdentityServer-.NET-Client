@@ -62,7 +62,7 @@ My intention was to use it with some kind of linear, DRY and elegant builder pat
      loads the data if everything works (could not get Course Title to populate though, but in Postman
      it does..)
 
-     **Note:** Only user2 is an administrator at this point. Authorization is set on the receiving students
+   **Note:** Only user2 is an administrator at this point. Authorization is set on the receiving students
      controller on the ContosoUniversity.API.
 
   b) copy the token and use Postman to try it out. Don't forget to set the headers!
