@@ -65,7 +65,7 @@ My intention was to use it with some kind of linear, DRY and elegant builder pat
      **Note:** Only user2 is an administrator at this point. Authorization is set on the receiving students
      controller on the ContosoUniversity.API.
 
-  a) copy the token and use Postman to try it out. Don't forget to set the headers!
+  b) copy the token and use Postman to try it out. Don't forget to set the headers!
       - or if you like, test by implementing **Swagger.** Another good tool is found at **jwt.io**, used for
      inspection of the token.
    
