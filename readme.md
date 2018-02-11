@@ -58,14 +58,14 @@ My intention was to use it with some kind of linear, DRY and elegant builder pat
 
    **Try it out:** 	
  
-   a) from the MvcClientB, go to students tab, currently changeing the initial pagination size. This tab      
-      loads the data if everything works (could not get Course Title to populate though, but in Postman
-      it does..)
+  a) from the MvcClientB, go to students tab, currently changeing the initial pagination size. This tab      
+     loads the data if everything works (could not get Course Title to populate though, but in Postman
+     it does..)
 
-     **Note:** Only user2 is an administrator at this point. Authorization is set on the receiving students
+   **Note:** Only user2 is an administrator at this point. Authorization is set on the receiving students
      controller on the ContosoUniversity.API.
 
-  a) copy the token and use Postman to try it out. Don't forget to set the headers!
+  b) copy the token and use Postman to try it out. Don't forget to set the headers!
       - or if you like, test by implementing **Swagger.** Another good tool is found at **jwt.io**, used for
      inspection of the token.
    
