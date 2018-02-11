@@ -34,26 +34,27 @@ namespace ContosoUniversity.API
             {
                 options.Filters.Add(typeof(ValidateModelAttribute));
             })
-         .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<StudentViewModelValidator>());
+            
+            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<StudentViewModelValidator>());
         
 
-        //Add database configurations
-        services.AddDbContext<ContosoContext>(options =>
+            //Add database configurations
+            services.AddDbContext<ContosoContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("ContosoUniversity"),
                 b => b.MigrationsAssembly("ContosoUniversity.Data"));
 
             });
 
-            // Add service and create Policy with options - maybe not needed?
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin() // dont forget the slash if specified!
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials());
-            });
+            //CORS - not needed as for now
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("CorsPolicy",
+            //        builder => builder.AllowAnyOrigin() //Don't forget the slash if specified!
+            //        .AllowAnyMethod()
+            //        .AllowAnyHeader()
+            //        .AllowCredentials());
+            //});
 
 
         
@@ -65,12 +66,12 @@ namespace ContosoUniversity.API
 
                     options.ApiName = "ContosoUniversity.API";
                 });
+
             //Automapper   
             Mapper.Initialize(cfg =>
             {
                 cfg.AddProfile(new MappingProfile());
             });
-
 
 
             //Repositories
@@ -86,11 +87,11 @@ namespace ContosoUniversity.API
 
            app.UseStaticFiles();
 
-           app.UseCors("CorsPolicy");
+         //app.UseCors("CorsPolicy");
 
 
 
-            app.UseExceptionHandler(builder =>
+          app.UseExceptionHandler(builder =>
             {
                 builder.Run(
                 async context =>
@@ -106,9 +107,10 @@ namespace ContosoUniversity.API
                     }
                 });
             });
-            app.UseAuthentication();
+        
+          app.UseAuthentication();
 
-            app.UseMvcWithDefaultRoute();
+          app.UseMvcWithDefaultRoute();
 
         }
 

@@ -22,28 +22,27 @@ namespace MvcClientB
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        //This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
            
-
             Uri endPointA = new Uri("http://localhost:51089/");
-            HttpClient httpClient = new HttpClient(new MyHandler()) // Adding a custom header, "Pagination", this way. Maybe wrong/overkill?
+            HttpClient httpClient = new HttpClient(new MyHandler())
             {
                 BaseAddress = endPointA,
             };
             ServicePointManager.FindServicePoint(endPointA).ConnectionLeaseTimeout = 60000; 
-            services.AddSingleton<HttpClient>(httpClient); // note the singleton. Could casue problems with changeing DNS, see future of HttpClientFactory Feature from Micro.
+            services.AddSingleton<HttpClient>(httpClient); //Note the singleton. Could cause problems with changeing DNS. New HttpClientFactory Feature from Microsoft will fix this.
 
-            // Add service and create Policy with options - maybe not needed?
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials());
-            });
+            //CORS - not needed as for now.
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("CorsPolicy",
+            //        builder => builder.AllowAnyOrigin()
+            //        .AllowAnyMethod()
+            //        .AllowAnyHeader()
+            //        .AllowCredentials());
+            //});
 
 
             services.AddMvc(options =>
@@ -75,7 +74,7 @@ namespace MvcClientB
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        //This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -90,7 +89,7 @@ namespace MvcClientB
 
             app.UseStaticFiles();
 
-            app.UseCors("CorsPolicy");
+          //app.UseCors("CorsPolicy");
 
             app.UseAuthentication();
 

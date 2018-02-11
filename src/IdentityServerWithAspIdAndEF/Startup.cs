@@ -31,7 +31,7 @@ namespace IdentityServerWithAspNetIdentity
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            // Add application services.
+            //Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();

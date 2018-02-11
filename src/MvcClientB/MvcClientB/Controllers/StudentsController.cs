@@ -43,7 +43,8 @@ namespace MvcClientB.Controllers
                 return View(students);
             }
 
-            return View("Error");
+            var error = httpResponse.ReasonPhrase;
+            return Content(error + " - " + "Could not get students. Please try again");
 
         }
 
@@ -68,14 +69,15 @@ namespace MvcClientB.Controllers
 
             string stringData = JsonConvert.SerializeObject(student);
             var contentData = new StringContent(stringData, System.Text.Encoding.UTF8, "application/json");
-            HttpResponseMessage responseMessage = await _httpClient.PostAsync(requestEndpoint, contentData);
+            HttpResponseMessage httpResponse = await _httpClient.PostAsync(requestEndpoint, contentData);
 
-            if (responseMessage.IsSuccessStatusCode)
+            if (httpResponse.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
             }
 
-            return View("Error");
+            var error = httpResponse.ReasonPhrase;
+            return Content(error + " - " + "Could not add student. Please try again");
 
         }
 
@@ -96,10 +98,11 @@ namespace MvcClientB.Controllers
                 return View(student);
             }
 
-            return View("Error");
+            var error = httpResponse.ReasonPhrase;
+            return Content(error + " - " + "Could not get student. Please try again");
 
         }
-        //Posting(aka Put) the Updated Student
+        //Posting(aka Put) the updated Student
         [HttpPost]
         public async Task<ActionResult> Edit(Student student)
         {
@@ -111,13 +114,15 @@ namespace MvcClientB.Controllers
 
             string stringData = JsonConvert.SerializeObject(student);
             var contentData = new StringContent(stringData, System.Text.Encoding.UTF8, "application/json");
-            HttpResponseMessage responseMessage = await _httpClient.PutAsync(requestEndpoint + student.ID, contentData);
+            HttpResponseMessage httpResponse = await _httpClient.PutAsync(requestEndpoint + student.ID, contentData);
 
-            if (responseMessage.IsSuccessStatusCode)
+            if (httpResponse.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
             }
-            return View("Error");
+
+            var error = httpResponse.ReasonPhrase;
+            return Content(error + " - " + "Could not save changes made to student. Please try again");
 
         }
         //Getting the student to delete
@@ -137,7 +142,8 @@ namespace MvcClientB.Controllers
                 return View(student);
             }
 
-            return View("Error");
+            var error = httpResponse.ReasonPhrase;
+            return Content(error + " - " + "Could not get student. Please try again");
 
         }
         //Deleting the student
@@ -156,7 +162,8 @@ namespace MvcClientB.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View("Error");
+            var error = httpResponse.ReasonPhrase;
+            return Content(error + " - " + "Could not delete student. Please try again");
 
         }
 
@@ -177,7 +184,8 @@ namespace MvcClientB.Controllers
                 return View(student);
             }
 
-            return View("Error");
+            var error = httpResponse.ReasonPhrase;
+            return Content(error + " - " + "Could not get details of student. Please try again");
 
         }
 
