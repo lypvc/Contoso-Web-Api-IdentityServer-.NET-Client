@@ -3,31 +3,6 @@
 
 **Level:** Beginner
 
-**Intention:** Basically show how to consume a protected API from a .NET Client (learning stuff)
-
-I am big fan of **IdentityServer**, and this repo is built on top of/using 
-one of their samples, coming from [here](https://github.com/IdentityServer/IdentityServer4.Samples).
-
-The classes used come from **Microsofts** excellent EF Guide, can be found at this [spot](https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/intro).
-
-The code concerning the Contoso University API originates from this repo, by [kkagill]( https://github.com/kkagill/ContosoUniversity-Backend).  **This repo has some very nice examples on how to...**
-
-1. make calls into the db
-2. use the Generic Repository Pattern 
-3. use Interface implementation - **take a close look, this set up gives a lot of flexibility**
-4. add pagination on the API, through the usage of headers in this case
-
-**Validation:** we can take whatever approach we like, but **Fluent Validation** used in the original 
-above, will serve the purpose. 
-
-**Finally what I wanted to do:** I wanted to consume data from an Web Api(not just inspect the tokens), protected by IdentityServer, using an MVC application, adding simple authorization into the mix.
-
-**MvcClientB**  is the .NET client consuming the ContosoUniversity.API.  
-My intention was to use it with some kind of linear, DRY and elegant builder pattern, like this one being used in [here]( https://github.com/TahirNaushad/Fiver.Api.HttpClient), but I could not found a way of how to extract the token and then use it in this fashion. 
-
-
-**Note:** When using HttpClient, the recomendation from Microsoft is to use only one instance, hence the DI. 
-
 **-- Steps to try this demo out --** 
 
 1. Download, rebuild.
